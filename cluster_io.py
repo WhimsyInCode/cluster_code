@@ -13,14 +13,14 @@ REQUEST_TYPES = ["build_index", "search", "topn"]
 
 # ---------- Kafka helpers ----------
 
-def create_kafka_producer() -> Producer:
+def create_kafka_producer():
     conf = {
         'bootstrap.servers': BROKER,
         'client.id': socket.gethostname()
     }
     return Producer(conf)
 
-def create_kafka_consumer() -> Consumer:
+def create_kafka_consumer():
     conf = {
         'bootstrap.servers': BROKER,
         'group.id': GROUP_ID,
