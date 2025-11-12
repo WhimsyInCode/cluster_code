@@ -89,6 +89,7 @@ def get_metadata(index_id):
         return pickle.load(f)
 
 def search(index_id, word):
+    word = word.lower()
     inverted_idx = get_inverted_idx(index_id)
     metadata = get_metadata(index_id)
     if word in inverted_idx:
