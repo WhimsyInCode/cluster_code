@@ -43,12 +43,5 @@ def build_index(index_id):
     return submit_hadoop_job("mapper.py", "reducer.py", "/{}".format(index_id), "/{}-TempOutFolder".format(index_id))
 
 def merge_output(index_id):
-    command = "hadoop fs -getmerge {} {}".format("/{}-TempOutFolder".format(index_id), "/{}-MergedData".format(index_id))
-    return run_command(command)
-
-def load_inverted_index_from_hdfs(index_id):
-    """
-    Store inverted index to ./{index_id}-index
-    """
-    command = "hadoop fs -cat {} > ./{}-index".format("/{}-MergedData".format(index_id), index_id)
+    command = "hadoop fs -getmerge {} {}".format("/{}-TempOutFolder".format(index_id), "./{}-index".format(index_id))
     return run_command(command)

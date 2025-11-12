@@ -142,8 +142,6 @@ def process(data):
         fetch_and_store(url, index_id)
         build_index(index_id)
         code, _, _ = merge_output(index_id)
-        if code != 0:
-            code, _, _ = load_inverted_index_from_hdfs(index_id)
         if code == 0:
             response = {
                 "request_id": data.get("request_id"),
